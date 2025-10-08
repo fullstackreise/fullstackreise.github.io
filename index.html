@@ -1,22 +1,182 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
-    <title>Full Stack Reise</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Reise - Portfolio</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background: #f0f8ff;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
         h1 {
             color: #2563eb;
+            margin-bottom: 15px;
+            font-size: 2.2rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .language-switcher {
+            margin: 25px 0;
+        }
+
+        .language-btn {
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .language-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        .language-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .status {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .contact {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .contact a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: #eff6ff;
+            color: #1e40af;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            border: 1px solid #dbeafe;
         }
     </style>
 </head>
 <body>
-    <h1>🚀 Full Stack Reise</h1>
-    <p><strong>Meine Entwickler Reise beginnt hier!</strong></p>
-    <p>Portfolio kommt bald...</p>
+    <div class="container">
+        <div class="logo">🚀</div>
+        
+        <h1 id="main-title">Full Stack Reise</h1>
+        
+        <div class="subtitle" id="subtitle">
+            Meine Reise zum Full-Stack Entwickler beginnt hier! Das Portfolio ist in Arbeit und wird bald verfügbar sein.
+        </div>
+
+        <div class="language-switcher">
+            <button class="language-btn active" onclick="switchLanguage('de')">DE 🇩🇪</button>
+            <button class="language-btn" onclick="switchLanguage('en')">EN 🇬🇧</button>
+        </div>
+
+        <div class="tech-stack">
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">HTML/CSS</span>
+            <span class="tech-tag">MongoDB</span>
+        </div>
+
+        <div class="status" id="status">
+            <strong>🚧 Portfolio in Arbeit</strong><br>
+            Ich arbeite hart daran, mein Portfolio zu erstellen. Komm bald wieder!
+        </div>
+
+        <div class="contact">
+            📧 <a href="mailto:fullstackreise@gmail.com">fullstackreise@gmail.com</a><br>
+            💼 <a href="https://github.com/fullstackreise" target="_blank">GitHub Profile</a><br>
+            🔗 <a href="https://linkedin.com/in/fullstackreise" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            de: {
+                title: "Full Stack Reise",
+                subtitle: "Meine Reise zum Full-Stack Entwickler beginnt hier! Das Portfolio ist in Arbeit und wird bald verfügbar sein.",
+                status: "🚧 Portfolio in Arbeit<br>Ich arbeite hart daran, mein Portfolio zu erstellen. Komm bald wieder!"
+            },
+            en: {
+                title: "Full Stack Journey", 
+                subtitle: "My journey to becoming a Full Stack Developer starts here! The portfolio is under construction and will be available soon.",
+                status: "🚧 Portfolio Under Construction<br>I'm working hard to build my portfolio. Check back soon!"
+            }
+        };
+
+        function switchLanguage(lang) {
+            // Update active button
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update content
+            document.getElementById('main-title').textContent = translations[lang].title;
+            document.getElementById('subtitle').innerHTML = translations[lang].subtitle;
+            document.getElementById('status').innerHTML = translations[lang].status;
+        }
+    </script>
 </body>
 </html>
